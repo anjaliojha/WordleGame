@@ -20,3 +20,52 @@ hr{
     flex-wrap: wrap;
 }
 /* style for tiles */
+.tile{
+    /* Box */
+    border:2px solid rgb(19,18,18);
+    width: 60px;
+    height: 60px;
+    margin: 2.5px;
+    
+    /* Text */
+    color :black;
+    font-size: 36px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.keyboard-row{
+    width: 400px;
+    margin:0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.key-tile{
+    width: 36px;
+    height: 40px;
+    margin: 1px;
+    border: 1px solid rgb(12,12,12);
+    border-radius: 5px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.enter-key-tile{
+    width: 76px;
+    height: 40px;
+    margin: 1px;
+    border: 1px solid rgb(0,0,0);
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
