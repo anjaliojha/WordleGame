@@ -37,6 +37,7 @@ hr{
 
 }
 .keyboard-row{
+    cursor: pointer;
     width: 400px;
     margin:0 auto;
     display: flex;
@@ -55,6 +56,24 @@ hr{
     align-items: center;
 
 }
+.correct{
+    background-color: green;
+    color:  white;
+    border-color: white;
+}
+
+.present{
+    background-color: yellow;
+    color: white;
+    border-color: white;
+}
+
+.absent{
+    background-color: gray;
+    color: white;
+    border-color: white;
+}
+
 .enter-key-tile{
     width: 76px;
     height: 40px;
