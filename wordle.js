@@ -11,18 +11,28 @@ var column = 0;
 //for gameOver
 var gameOver = false;
 
-var worldList = ['apple','train','roast','about','title','hello'];
-var guessList = ['apple','grape','combo','style','index','award','basis','beach','eager','about'];
+//list to select the word randomly 
+var worldList = ['apple','train','roast','about','title','hello','video','whole','union','visit','theme','sugar','style',
+'study','state','sport','smoke','right','pride','press','night','march','model','japan','group','front'];
+
+//used to provide guesses
+var guessList = ['apple','grape','combo','style','index','award','basis','beach','eager','about','blood','birth','chair',
+'chain','dollar','dream','earth','eager','fight','grass','frank','money','music','novel','Knife','octet','radio','ratio',
+'route','scope','shape','sheep','trend','trial','truth','uncle','unity','value','watch','water','woman','world','youth'];
+
 
 guessList = guessList.concat(worldList);
 
 //generating a random word from the list of words
 var word = worldList[Math.floor(Math.random()*worldList.length)].toUpperCase();
-console.log(word);
+//console.log(word);
 
+//
 window.onload = function(){
     initialize();
 }
+
+//function to create the tiles for holding the characters
 function initialize(){
     //creating the board
     for(let r = 0;r < guessCount;r++){//rows
@@ -31,13 +41,20 @@ function initialize(){
             //creating a span element
             let tile = document.createElement("span");
 
+            //assigning the IDs to the tiles
             tile.id = r.toString()+"-"+c.toString();
+
+            //adding css to the tile element
             tile.classList.add("tile");
+
             tile.innerText = "";
+
+            //adding individual tiles to the tile board
             document.getElementById("board").appendChild(tile);
 
         }
     }
+
     //creating the keyboard
     let keyboard = [['Q','W','E','R','T','Y','U','I','O','P'],
     ['A','S','D','F','G','H','J','K','L'],
@@ -71,23 +88,26 @@ function initialize(){
             else if("A"<=key && key <="Z"){
                 keyTile.id = "key"+key;
             }
-            //create an event listener
-            //processKey will be created later
+
+            //adding eventListener to the virtual keybaord
            keyTile.addEventListener("click",processKey);
 
             if(key == "Enter"){
-                //will create enter-key-tile claas later
+
                 keyTile.classList.add("enter-key-tile")
             }
             else{
                 keyTile.classList.add("key-tile")
             }
+
             keyboardRow.appendChild(keyTile);   
         }
         document.body.appendChild(keyboardRow);
     }
+
+
     document.addEventListener("keyup",(e) => {
-        //processInput will be created later
+    
         processInput(e);
     })
 }
@@ -96,6 +116,7 @@ function processKey(){
     e = {"code" : this.id};
     processInput(e);
 }
+
 
 function processInput(e){
     if(gameOver){
@@ -122,9 +143,12 @@ function processInput(e){
         currTile.innerText = "";
     }
     else if(e.code == "Enter"){
-        //will create later
+
+        //applies necessary styles to the alphabets upon successful macthing of the alphabets
         update();
     }
+
+    //in case all the guesses are incorrect 
     if(!gameOver && row == guessCount ){
         gameOver = true;
         document.getElementById("answer").innerText = `Oops! the right answer is ${word} `;
@@ -143,12 +167,13 @@ function update(){
     }
 
     guess = guess.toLowerCase();
-    console.log(guess);
+    //console.log(guess);
 
     
     //if the word is not present in guess list print the message accordingly and proceed
     if(!guessList.includes(guess)){
-        document.getElementById("answer").innerText = "not in wordList";
+        document.getElementById("answer").innerText = "Word not in the wordList";
+        document.getElementById("answer").style.background = "rgba(250,216,89,0.5)";
         //return;
     }
     
@@ -166,12 +191,12 @@ function update(){
             
         }
     }
-    console.log(letterCount);
+  //  console.log(letterCount);
     
     for(let c = 0;c < width ; c++){
         let currTile = document.getElementById(row.toString()+"-"+c.toString());
         let letter = currTile.innerText;
-        console.log(letter);
+        //console.log(letter);
         
         if(word[c] == letter){
             currTile.classList.add("correct");
@@ -184,7 +209,7 @@ function update(){
             gameOver = true;
         }
     }
-    console.log(letterCount);
+    //console.log(letterCount);
     
     for(let c = 0;c < width;c++){
         let currTile = document.getElementById(row.toString()+"-"+c.toString());
@@ -213,9 +238,11 @@ function update(){
     let result = word.toLowerCase().localeCompare(guess.toLowerCase());
     if(result == 0){
         console.log("you won");
-        document.getElementById("answer").innerText = "You guessed it right";
+        document.getElementById("answer").innerText = "Congratulations! You guessed it right";
+        document.getElementById("answer").classList.add("correct")
         return;
     }
+    //updation of row and column
     row += 1;
     column = 0;
 }
