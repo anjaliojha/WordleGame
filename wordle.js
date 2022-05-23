@@ -131,8 +131,8 @@ function processInput(e){
             if(currTile.innerHTML == ""){
                 currTile.innerText = e.code[3];
 
-                console.log(e.code)
-                console.log(e.code[3])
+                //console.log(e.code)
+                //console.log(e.code[3])
                 column += 1;
                // console.log(currTile.innerText);
             }
