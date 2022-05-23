@@ -1,3 +1,6 @@
+import worldList from "./word.js";
+
+//var wordList = require('./word');
 //maximum number of guesses
 var guessCount = 6;
 
@@ -12,8 +15,8 @@ var column = 0;
 var gameOver = false;
 
 //list to select the word randomly 
-var worldList = ['apple','train','roast','about','title','hello','video','whole','union','visit','theme','sugar','style',
-'study','state','sport','smoke','right','pride','press','night','march','model','japan','group','front'];
+// var worldList = ['apple','train','roast','about','title','hello','video','whole','union','visit','theme','sugar','style',
+// 'study','state','sport','smoke','right','pride','press','night','march','model','japan','group','front'];
 
 //used to provide guesses
 var guessList = ['apple','grape','combo','style','index','award','basis','beach','eager','about','blood','birth','chair',
@@ -113,7 +116,7 @@ function initialize(){
 }
 
 function processKey(){
-    e = {"code" : this.id};
+    let e = {"code" : this.id};
     processInput(e);
 }
 
